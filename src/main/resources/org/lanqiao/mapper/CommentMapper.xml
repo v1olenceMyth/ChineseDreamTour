@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.dao.CommentDao">
+  <resultMap id="CommentResult" type="org.lanqiao.entity.Comment">
+    <id column="id" jdbcType="DECIMAL" property="id" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+    <result column="user_id" jdbcType="DECIMAL" property="userId" />
+    <result column="send_time" jdbcType="DATE" property="sendTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, message, user_id, send_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="CommentResult">
+    select 
+    <include refid="Base_Column_List" />
+    from TEAM.COMMENT
+    where id = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from TEAM.COMMENT
+    where id = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Comment">
+    insert into TEAM.COMMENT (id, message, user_id, 
+      send_time)
+    values (#{id,jdbcType=DECIMAL}, #{message,jdbcType=VARCHAR}, #{userId,jdbcType=DECIMAL}, 
+      #{sendTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Comment">
+    insert into TEAM.COMMENT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="sendTime != null">
+        send_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="sendTime != null">
+        #{sendTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Comment">
+    update TEAM.COMMENT
+    <set>
+      <if test="message != null">
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="sendTime != null">
+        send_time = #{sendTime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Comment">
+    update TEAM.COMMENT
+    set message = #{message,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=DECIMAL},
+      send_time = #{sendTime,jdbcType=DATE}
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

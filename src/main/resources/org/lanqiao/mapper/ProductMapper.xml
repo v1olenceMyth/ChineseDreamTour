@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.dao.ProductDao">
+  <resultMap id="ProductResult" type="org.lanqiao.entity.Product">
+    <id column="id" jdbcType="DECIMAL" property="id" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="product_Name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_Picture" jdbcType="VARCHAR" property="productPicture" />
+    <result column="product_Detail" jdbcType="VARCHAR" property="productDetail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, city, product_Name, product_Picture, product_Detail
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ProductResult">
+    select 
+    <include refid="Base_Column_List" />
+    from TEAM.PRODUCT
+    where id = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from TEAM.PRODUCT
+    where id = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Product">
+    insert into TEAM.PRODUCT (id, city, product_Name, 
+      product_Picture, product_Detail)
+    values (#{id,jdbcType=DECIMAL}, #{city,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
+      #{productPicture,jdbcType=VARCHAR}, #{productDetail,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Product">
+    insert into TEAM.PRODUCT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="productName != null">
+        product_Name,
+      </if>
+      <if test="productPicture != null">
+        product_Picture,
+      </if>
+      <if test="productDetail != null">
+        product_Detail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productPicture != null">
+        #{productPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="productDetail != null">
+        #{productDetail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Product">
+    update TEAM.PRODUCT
+    <set>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        product_Name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productPicture != null">
+        product_Picture = #{productPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="productDetail != null">
+        product_Detail = #{productDetail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Product">
+    update TEAM.PRODUCT
+    set city = #{city,jdbcType=VARCHAR},
+      product_Name = #{productName,jdbcType=VARCHAR},
+      product_Picture = #{productPicture,jdbcType=VARCHAR},
+      product_Detail = #{productDetail,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

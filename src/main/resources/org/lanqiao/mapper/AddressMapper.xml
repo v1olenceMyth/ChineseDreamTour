@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.dao.AddressDao">
+  <resultMap id="AddressResult" type="org.lanqiao.entity.Address">
+    <id column="id" jdbcType="DECIMAL" property="id" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="ctiy" jdbcType="VARCHAR" property="ctiy" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="address_detail" jdbcType="VARCHAR" property="addressDetail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, province, ctiy, area, address_detail
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="AddressResult">
+    select 
+    <include refid="Base_Column_List" />
+    from TEAM.ADDRESS
+    where id = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from TEAM.ADDRESS
+    where id = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Address">
+    insert into TEAM.ADDRESS (id, province, ctiy, 
+      area, address_detail)
+    values (#{id,jdbcType=DECIMAL}, #{province,jdbcType=VARCHAR}, #{ctiy,jdbcType=VARCHAR}, 
+      #{area,jdbcType=VARCHAR}, #{addressDetail,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Address">
+    insert into TEAM.ADDRESS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="ctiy != null">
+        ctiy,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="addressDetail != null">
+        address_detail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="ctiy != null">
+        #{ctiy,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="addressDetail != null">
+        #{addressDetail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Address">
+    update TEAM.ADDRESS
+    <set>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="ctiy != null">
+        ctiy = #{ctiy,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="addressDetail != null">
+        address_detail = #{addressDetail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Address">
+    update TEAM.ADDRESS
+    set province = #{province,jdbcType=VARCHAR},
+      ctiy = #{ctiy,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      address_detail = #{addressDetail,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

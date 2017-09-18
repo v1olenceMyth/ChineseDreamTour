@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.dao.PackageDao">
+  <resultMap id="PackageResult" type="org.lanqiao.entity.Package">
+    <id column="id" jdbcType="DECIMAL" property="id" />
+    <result column="package_Name" jdbcType="VARCHAR" property="packageName" />
+    <result column="package_Price" jdbcType="FLOAT" property="packagePrice" />
+    <result column="out_Date" jdbcType="DATE" property="outDate" />
+    <result column="package_Detail" jdbcType="VARCHAR" property="packageDetail" />
+    <result column="package_Picture" jdbcType="VARCHAR" property="packagePicture" />
+    <result column="package_Safe" jdbcType="DECIMAL" property="packageSafe" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, package_Name, package_Price, out_Date, package_Detail, package_Picture, package_Safe
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="PackageResult">
+    select 
+    <include refid="Base_Column_List" />
+    from TEAM.PACKAGE
+    where id = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from TEAM.PACKAGE
+    where id = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Package">
+    insert into TEAM.PACKAGE (id, package_Name, package_Price, 
+      out_Date, package_Detail, package_Picture, 
+      package_Safe)
+    values (#{id,jdbcType=DECIMAL}, #{packageName,jdbcType=VARCHAR}, #{packagePrice,jdbcType=FLOAT}, 
+      #{outDate,jdbcType=DATE}, #{packageDetail,jdbcType=VARCHAR}, #{packagePicture,jdbcType=VARCHAR}, 
+      #{packageSafe,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Package">
+    insert into TEAM.PACKAGE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="packageName != null">
+        package_Name,
+      </if>
+      <if test="packagePrice != null">
+        package_Price,
+      </if>
+      <if test="outDate != null">
+        out_Date,
+      </if>
+      <if test="packageDetail != null">
+        package_Detail,
+      </if>
+      <if test="packagePicture != null">
+        package_Picture,
+      </if>
+      <if test="packageSafe != null">
+        package_Safe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="packageName != null">
+        #{packageName,jdbcType=VARCHAR},
+      </if>
+      <if test="packagePrice != null">
+        #{packagePrice,jdbcType=FLOAT},
+      </if>
+      <if test="outDate != null">
+        #{outDate,jdbcType=DATE},
+      </if>
+      <if test="packageDetail != null">
+        #{packageDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="packagePicture != null">
+        #{packagePicture,jdbcType=VARCHAR},
+      </if>
+      <if test="packageSafe != null">
+        #{packageSafe,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Package">
+    update TEAM.PACKAGE
+    <set>
+      <if test="packageName != null">
+        package_Name = #{packageName,jdbcType=VARCHAR},
+      </if>
+      <if test="packagePrice != null">
+        package_Price = #{packagePrice,jdbcType=FLOAT},
+      </if>
+      <if test="outDate != null">
+        out_Date = #{outDate,jdbcType=DATE},
+      </if>
+      <if test="packageDetail != null">
+        package_Detail = #{packageDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="packagePicture != null">
+        package_Picture = #{packagePicture,jdbcType=VARCHAR},
+      </if>
+      <if test="packageSafe != null">
+        package_Safe = #{packageSafe,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Package">
+    update TEAM.PACKAGE
+    set package_Name = #{packageName,jdbcType=VARCHAR},
+      package_Price = #{packagePrice,jdbcType=FLOAT},
+      out_Date = #{outDate,jdbcType=DATE},
+      package_Detail = #{packageDetail,jdbcType=VARCHAR},
+      package_Picture = #{packagePicture,jdbcType=VARCHAR},
+      package_Safe = #{packageSafe,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

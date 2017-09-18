@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.dao.TicketDao">
+  <resultMap id="TicketResult" type="org.lanqiao.entity.Ticket">
+    <id column="id" jdbcType="DECIMAL" property="id" />
+    <result column="begin" jdbcType="VARCHAR" property="begin" />
+    <result column="end" jdbcType="VARCHAR" property="end" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="ticket_number" jdbcType="VARCHAR" property="ticketNumber" />
+    <result column="toall_price" jdbcType="DECIMAL" property="toallPrice" />
+    <result column="ticket_price" jdbcType="FLOAT" property="ticketPrice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, begin, end, type, ticket_number, toall_price, ticket_price
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="TicketResult">
+    select 
+    <include refid="Base_Column_List" />
+    from TEAM.TICKET
+    where id = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from TEAM.TICKET
+    where id = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Ticket">
+    insert into TEAM.TICKET (id, begin, end, 
+      type, ticket_number, toall_price, 
+      ticket_price)
+    values (#{id,jdbcType=DECIMAL}, #{begin,jdbcType=VARCHAR}, #{end,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{ticketNumber,jdbcType=VARCHAR}, #{toallPrice,jdbcType=DECIMAL}, 
+      #{ticketPrice,jdbcType=FLOAT})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Ticket">
+    insert into TEAM.TICKET
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="begin != null">
+        begin,
+      </if>
+      <if test="end != null">
+        end,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="ticketNumber != null">
+        ticket_number,
+      </if>
+      <if test="toallPrice != null">
+        toall_price,
+      </if>
+      <if test="ticketPrice != null">
+        ticket_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="begin != null">
+        #{begin,jdbcType=VARCHAR},
+      </if>
+      <if test="end != null">
+        #{end,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketNumber != null">
+        #{ticketNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="toallPrice != null">
+        #{toallPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="ticketPrice != null">
+        #{ticketPrice,jdbcType=FLOAT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Ticket">
+    update TEAM.TICKET
+    <set>
+      <if test="begin != null">
+        begin = #{begin,jdbcType=VARCHAR},
+      </if>
+      <if test="end != null">
+        end = #{end,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketNumber != null">
+        ticket_number = #{ticketNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="toallPrice != null">
+        toall_price = #{toallPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="ticketPrice != null">
+        ticket_price = #{ticketPrice,jdbcType=FLOAT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Ticket">
+    update TEAM.TICKET
+    set begin = #{begin,jdbcType=VARCHAR},
+      end = #{end,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      ticket_number = #{ticketNumber,jdbcType=VARCHAR},
+      toall_price = #{toallPrice,jdbcType=DECIMAL},
+      ticket_price = #{ticketPrice,jdbcType=FLOAT}
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

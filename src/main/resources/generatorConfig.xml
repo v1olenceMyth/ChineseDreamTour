@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!-- 配置文件路径 -->
+	<properties resource="mybatis.properties" />
+
+	<!--数据库驱动包路径 -->
+	<classPathEntry location="${drive.class.path}" />
+
+	<context id="MySQLTables" targetRuntime="MyBatis3">
+		<!--关闭注释 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" /><!-- 是否取消注释 -->
+			<property name="suppressDate" value="true" /> <!-- 是否生成注释代时间戳 -->
+		</commentGenerator>
+
+		<!--数据库连接信息 -->
+		<jdbcConnection driverClass="${jdbc.driver}"
+			connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}">
+		</jdbcConnection>
+
+		<!--生成的model 包路径 -->
+		<javaModelGenerator targetPackage="${model.package}"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="ture" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!--生成xml mapper文件 路径 -->
+		<sqlMapGenerator targetPackage="${xml.mapper.package}"
+			targetProject="src/main/resources">
+			<property name="enableSubPackages" value="ture" />
+		</sqlMapGenerator>
+
+		<!-- 生成的Dao接口 的包路径 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="${dao.package}" targetProject="src/main/java">
+			<property name="enableSubPackages" value="ture" />
+		</javaClientGenerator>
+
+		<!--对应数据库表名 -->
+<!-- 		<table tableName="msgboard" domainObjectName="Msg"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			如果设置为true，生成的entity类会直接使用column本身的名字，而不会再使用驼峰命名方法，比如BORN_DATE_Time，生成的属性名字就是BORN_DATE,而不会是bornDateTime
+			<property name="useActualColumnNames" value="true" />
+			忽略列，不生成bean 字段
+			<ignoreColumn column="FRED" />
+			指定列的java数据类型
+			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
+		</table> -->
+		 <table schema="TEAM" tableName="ADDRESS" domainObjectName="Address"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		 <table schema="TEAM" tableName="BROWSING_HISTORY" domainObjectName="BrowsingHistory"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		 <table schema="TEAM" tableName="COMMENT" domainObjectName="Comment"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		 <table schema="TEAM" tableName="EMPLOYEE" domainObjectName="Employee"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		 <table schema="TEAM" tableName="HOTEL" domainObjectName="Hotel"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		 <table schema="TEAM" tableName="ORDERS" domainObjectName="Orders"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		 <table schema="TEAM" tableName="PACKAGE" domainObjectName="Package"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		 <table schema="TEAM" tableName="PRODUCT" domainObjectName="Product"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		 <table schema="TEAM" tableName="ROOM" domainObjectName="Room"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		 <table schema="TEAM" tableName="SCENIC_SPOT" domainObjectName="ScenicSpot"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		 <table schema="TEAM" tableName="TICKET" domainObjectName="Ticket"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		 <table schema="TEAM" tableName="USER" domainObjectName="User"
+			enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		  
+	</context>
+</generatorConfiguration>

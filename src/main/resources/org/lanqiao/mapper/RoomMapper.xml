@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.dao.RoomDao">
+  <resultMap id="RoomResult" type="org.lanqiao.entity.Room">
+    <id column="id" jdbcType="DECIMAL" property="id" />
+    <result column="hotel_id" jdbcType="DECIMAL" property="hotelId" />
+    <result column="room_number" jdbcType="VARCHAR" property="roomNumber" />
+    <result column="room_price" jdbcType="FLOAT" property="roomPrice" />
+    <result column="room_pictrue" jdbcType="VARCHAR" property="roomPictrue" />
+    <result column="room_detail" jdbcType="VARCHAR" property="roomDetail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, hotel_id, room_number, room_price, room_pictrue, room_detail
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="RoomResult">
+    select 
+    <include refid="Base_Column_List" />
+    from TEAM.ROOM
+    where id = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from TEAM.ROOM
+    where id = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Room">
+    insert into TEAM.ROOM (id, hotel_id, room_number, 
+      room_price, room_pictrue, room_detail
+      )
+    values (#{id,jdbcType=DECIMAL}, #{hotelId,jdbcType=DECIMAL}, #{roomNumber,jdbcType=VARCHAR}, 
+      #{roomPrice,jdbcType=FLOAT}, #{roomPictrue,jdbcType=VARCHAR}, #{roomDetail,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Room">
+    insert into TEAM.ROOM
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="hotelId != null">
+        hotel_id,
+      </if>
+      <if test="roomNumber != null">
+        room_number,
+      </if>
+      <if test="roomPrice != null">
+        room_price,
+      </if>
+      <if test="roomPictrue != null">
+        room_pictrue,
+      </if>
+      <if test="roomDetail != null">
+        room_detail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="hotelId != null">
+        #{hotelId,jdbcType=DECIMAL},
+      </if>
+      <if test="roomNumber != null">
+        #{roomNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="roomPrice != null">
+        #{roomPrice,jdbcType=FLOAT},
+      </if>
+      <if test="roomPictrue != null">
+        #{roomPictrue,jdbcType=VARCHAR},
+      </if>
+      <if test="roomDetail != null">
+        #{roomDetail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Room">
+    update TEAM.ROOM
+    <set>
+      <if test="hotelId != null">
+        hotel_id = #{hotelId,jdbcType=DECIMAL},
+      </if>
+      <if test="roomNumber != null">
+        room_number = #{roomNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="roomPrice != null">
+        room_price = #{roomPrice,jdbcType=FLOAT},
+      </if>
+      <if test="roomPictrue != null">
+        room_pictrue = #{roomPictrue,jdbcType=VARCHAR},
+      </if>
+      <if test="roomDetail != null">
+        room_detail = #{roomDetail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Room">
+    update TEAM.ROOM
+    set hotel_id = #{hotelId,jdbcType=DECIMAL},
+      room_number = #{roomNumber,jdbcType=VARCHAR},
+      room_price = #{roomPrice,jdbcType=FLOAT},
+      room_pictrue = #{roomPictrue,jdbcType=VARCHAR},
+      room_detail = #{roomDetail,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.dao.EmployeeDao">
+  <resultMap id="EmployeeResult" type="org.lanqiao.entity.Employee">
+    <id column="id" jdbcType="DECIMAL" property="id" />
+    <result column="employee_Password" jdbcType="VARCHAR" property="employeePassword" />
+    <result column="employee_Name" jdbcType="VARCHAR" property="employeeName" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, employee_Password, employee_Name, position
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="EmployeeResult">
+    select 
+    <include refid="Base_Column_List" />
+    from TEAM.EMPLOYEE
+    where id = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from TEAM.EMPLOYEE
+    where id = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Employee">
+    insert into TEAM.EMPLOYEE (id, employee_Password, employee_Name, 
+      position)
+    values (#{id,jdbcType=DECIMAL}, #{employeePassword,jdbcType=VARCHAR}, #{employeeName,jdbcType=VARCHAR}, 
+      #{position,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Employee">
+    insert into TEAM.EMPLOYEE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="employeePassword != null">
+        employee_Password,
+      </if>
+      <if test="employeeName != null">
+        employee_Name,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="employeePassword != null">
+        #{employeePassword,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeName != null">
+        #{employeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Employee">
+    update TEAM.EMPLOYEE
+    <set>
+      <if test="employeePassword != null">
+        employee_Password = #{employeePassword,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeName != null">
+        employee_Name = #{employeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Employee">
+    update TEAM.EMPLOYEE
+    set employee_Password = #{employeePassword,jdbcType=VARCHAR},
+      employee_Name = #{employeeName,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

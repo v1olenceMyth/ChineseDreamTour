@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.dao.BrowsingHistoryDao">
+  <resultMap id="BrowsingHistoryResult" type="org.lanqiao.entity.BrowsingHistory">
+    <id column="id" jdbcType="DECIMAL" property="id" />
+    <result column="scenic_spot" jdbcType="VARCHAR" property="scenicSpot" />
+    <result column="browsing_date" jdbcType="DATE" property="browsingDate" />
+    <result column="user_id" jdbcType="DECIMAL" property="userId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, scenic_spot, browsing_date, user_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BrowsingHistoryResult">
+    select 
+    <include refid="Base_Column_List" />
+    from TEAM.BROWSING_HISTORY
+    where id = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from TEAM.BROWSING_HISTORY
+    where id = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.BrowsingHistory">
+    insert into TEAM.BROWSING_HISTORY (id, scenic_spot, browsing_date, 
+      user_id)
+    values (#{id,jdbcType=DECIMAL}, #{scenicSpot,jdbcType=VARCHAR}, #{browsingDate,jdbcType=DATE}, 
+      #{userId,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.BrowsingHistory">
+    insert into TEAM.BROWSING_HISTORY
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="scenicSpot != null">
+        scenic_spot,
+      </if>
+      <if test="browsingDate != null">
+        browsing_date,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="scenicSpot != null">
+        #{scenicSpot,jdbcType=VARCHAR},
+      </if>
+      <if test="browsingDate != null">
+        #{browsingDate,jdbcType=DATE},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.BrowsingHistory">
+    update TEAM.BROWSING_HISTORY
+    <set>
+      <if test="scenicSpot != null">
+        scenic_spot = #{scenicSpot,jdbcType=VARCHAR},
+      </if>
+      <if test="browsingDate != null">
+        browsing_date = #{browsingDate,jdbcType=DATE},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.BrowsingHistory">
+    update TEAM.BROWSING_HISTORY
+    set scenic_spot = #{scenicSpot,jdbcType=VARCHAR},
+      browsing_date = #{browsingDate,jdbcType=DATE},
+      user_id = #{userId,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

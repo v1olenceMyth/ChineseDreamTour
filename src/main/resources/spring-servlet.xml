@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/mvc 
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	<!-- 设置使用注解的类所在的jar包 -->
+	<context:component-scan base-package="org.lanqiao.controller" />
+	<context:component-scan base-package="org.lanqiao.service" />
+	<!-- 注册HandlerMapping和HandlerAdapter组件 -->
+	<mvc:annotation-driven />
+	<!-- 对静态资源文件的访问 支持访问WEB-INF目录 -->
+	<mvc:default-servlet-handler />
+	<!-- 对转向页面的路径解析。prefix:前缀,suffix:后缀 --> 
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
+</beans>

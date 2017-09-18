@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.dao.UserDao">
+  <resultMap id="UserResult" type="org.lanqiao.entity.User">
+    <id column="id" jdbcType="DECIMAL" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="truename" jdbcType="VARCHAR" property="truename" />
+    <result column="idCard" jdbcType="VARCHAR" property="idcard" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="pay_password" jdbcType="DECIMAL" property="payPassword" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_name, user_password, sex, truename, idCard, telephone, email, pay_password
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="UserResult">
+    select 
+    <include refid="Base_Column_List" />
+    from TEAM.USER
+    where id = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from TEAM.USER
+    where id = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.User">
+    insert into TEAM.USER (id, user_name, user_password, 
+      sex, truename, idCard, 
+      telephone, email, pay_password
+      )
+    values (#{id,jdbcType=DECIMAL}, #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{truename,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{payPassword,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.User">
+    insert into TEAM.USER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userPassword != null">
+        user_password,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="truename != null">
+        truename,
+      </if>
+      <if test="idcard != null">
+        idCard,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="payPassword != null">
+        pay_password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null">
+        #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="payPassword != null">
+        #{payPassword,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.User">
+    update TEAM.USER
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        user_password = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null">
+        truename = #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        idCard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="payPassword != null">
+        pay_password = #{payPassword,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.User">
+    update TEAM.USER
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_password = #{userPassword,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      truename = #{truename,jdbcType=VARCHAR},
+      idCard = #{idcard,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      pay_password = #{payPassword,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+  <resultMap id="UserResult" type="org.lanqiao.entity.User">
+    <id column="id" jdbcType="DECIMAL" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="truename" jdbcType="VARCHAR" property="truename" />
+    <result column="idCard" jdbcType="VARCHAR" property="idcard" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="pay_password" jdbcType="DECIMAL" property="payPassword" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_name, user_password, sex, truename, idCard, telephone, email, pay_password
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="UserResult">
+    select 
+    <include refid="Base_Column_List" />
+    from TEAM.USER
+    where id = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from TEAM.USER
+    where id = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.User">
+    insert into TEAM.USER (id, user_name, user_password, 
+      sex, truename, idCard, 
+      telephone, email, pay_password
+      )
+    values (#{id,jdbcType=DECIMAL}, #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{truename,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{payPassword,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.User">
+    insert into TEAM.USER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userPassword != null">
+        user_password,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="truename != null">
+        truename,
+      </if>
+      <if test="idcard != null">
+        idCard,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="payPassword != null">
+        pay_password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null">
+        #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="payPassword != null">
+        #{payPassword,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.User">
+    update TEAM.USER
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        user_password = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null">
+        truename = #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        idCard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="payPassword != null">
+        pay_password = #{payPassword,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.User">
+    update TEAM.USER
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_password = #{userPassword,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      truename = #{truename,jdbcType=VARCHAR},
+      idCard = #{idcard,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      pay_password = #{payPassword,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

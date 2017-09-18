@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.dao.HotelDao">
+  <resultMap id="HotelResult" type="org.lanqiao.entity.Hotel">
+    <id column="id" jdbcType="DECIMAL" property="id" />
+    <result column="hotel_Name" jdbcType="VARCHAR" property="hotelName" />
+    <result column="rank" jdbcType="DECIMAL" property="rank" />
+    <result column="hotel_Picture" jdbcType="VARCHAR" property="hotelPicture" />
+    <result column="hotel_Detail" jdbcType="VARCHAR" property="hotelDetail" />
+    <result column="hotel_Telephone" jdbcType="VARCHAR" property="hotelTelephone" />
+    <result column="address_Id" jdbcType="DECIMAL" property="addressId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, hotel_Name, rank, hotel_Picture, hotel_Detail, hotel_Telephone, address_Id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="HotelResult">
+    select 
+    <include refid="Base_Column_List" />
+    from TEAM.HOTEL
+    where id = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from TEAM.HOTEL
+    where id = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Hotel">
+    insert into TEAM.HOTEL (id, hotel_Name, rank, 
+      hotel_Picture, hotel_Detail, hotel_Telephone, 
+      address_Id)
+    values (#{id,jdbcType=DECIMAL}, #{hotelName,jdbcType=VARCHAR}, #{rank,jdbcType=DECIMAL}, 
+      #{hotelPicture,jdbcType=VARCHAR}, #{hotelDetail,jdbcType=VARCHAR}, #{hotelTelephone,jdbcType=VARCHAR}, 
+      #{addressId,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Hotel">
+    insert into TEAM.HOTEL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="hotelName != null">
+        hotel_Name,
+      </if>
+      <if test="rank != null">
+        rank,
+      </if>
+      <if test="hotelPicture != null">
+        hotel_Picture,
+      </if>
+      <if test="hotelDetail != null">
+        hotel_Detail,
+      </if>
+      <if test="hotelTelephone != null">
+        hotel_Telephone,
+      </if>
+      <if test="addressId != null">
+        address_Id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="hotelName != null">
+        #{hotelName,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null">
+        #{rank,jdbcType=DECIMAL},
+      </if>
+      <if test="hotelPicture != null">
+        #{hotelPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="hotelDetail != null">
+        #{hotelDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="hotelTelephone != null">
+        #{hotelTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="addressId != null">
+        #{addressId,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Hotel">
+    update TEAM.HOTEL
+    <set>
+      <if test="hotelName != null">
+        hotel_Name = #{hotelName,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null">
+        rank = #{rank,jdbcType=DECIMAL},
+      </if>
+      <if test="hotelPicture != null">
+        hotel_Picture = #{hotelPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="hotelDetail != null">
+        hotel_Detail = #{hotelDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="hotelTelephone != null">
+        hotel_Telephone = #{hotelTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="addressId != null">
+        address_Id = #{addressId,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Hotel">
+    update TEAM.HOTEL
+    set hotel_Name = #{hotelName,jdbcType=VARCHAR},
+      rank = #{rank,jdbcType=DECIMAL},
+      hotel_Picture = #{hotelPicture,jdbcType=VARCHAR},
+      hotel_Detail = #{hotelDetail,jdbcType=VARCHAR},
+      hotel_Telephone = #{hotelTelephone,jdbcType=VARCHAR},
+      address_Id = #{addressId,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>
