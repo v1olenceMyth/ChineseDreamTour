@@ -13,21 +13,21 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BrowsingHistoryResult">
     select 
     <include refid="Base_Column_List" />
-    from TEAM.BROWSING_HISTORY
+    from BROWSING_HISTORY
     where id = #{id,jdbcType=DECIMAL}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from TEAM.BROWSING_HISTORY
+    delete from BROWSING_HISTORY
     where id = #{id,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="org.lanqiao.entity.BrowsingHistory">
-    insert into TEAM.BROWSING_HISTORY (id, scenic_spot, browsing_date, 
+    insert into BROWSING_HISTORY (id, scenic_spot, browsing_date, 
       user_id)
     values (#{id,jdbcType=DECIMAL}, #{scenicSpot,jdbcType=VARCHAR}, #{browsingDate,jdbcType=DATE}, 
       #{userId,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="org.lanqiao.entity.BrowsingHistory">
-    insert into TEAM.BROWSING_HISTORY
+    insert into BROWSING_HISTORY
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -58,7 +58,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.BrowsingHistory">
-    update TEAM.BROWSING_HISTORY
+    update BROWSING_HISTORY
     <set>
       <if test="scenicSpot != null">
         scenic_spot = #{scenicSpot,jdbcType=VARCHAR},
@@ -73,7 +73,7 @@
     where id = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.BrowsingHistory">
-    update TEAM.BROWSING_HISTORY
+    update BROWSING_HISTORY
     set scenic_spot = #{scenicSpot,jdbcType=VARCHAR},
       browsing_date = #{browsingDate,jdbcType=DATE},
       user_id = #{userId,jdbcType=DECIMAL}

@@ -13,21 +13,21 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="CommentResult">
     select 
     <include refid="Base_Column_List" />
-    from TEAM.COMMENT
+    from COMMENT
     where id = #{id,jdbcType=DECIMAL}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from TEAM.COMMENT
+    delete from COMMENT
     where id = #{id,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="org.lanqiao.entity.Comment">
-    insert into TEAM.COMMENT (id, message, user_id, 
+    insert into COMMENT (id, message, user_id, 
       send_time)
     values (#{id,jdbcType=DECIMAL}, #{message,jdbcType=VARCHAR}, #{userId,jdbcType=DECIMAL}, 
       #{sendTime,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="org.lanqiao.entity.Comment">
-    insert into TEAM.COMMENT
+    insert into COMMENT
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -58,7 +58,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Comment">
-    update TEAM.COMMENT
+    update COMMENT
     <set>
       <if test="message != null">
         message = #{message,jdbcType=VARCHAR},
@@ -73,7 +73,7 @@
     where id = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Comment">
-    update TEAM.COMMENT
+    update COMMENT
     set message = #{message,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=DECIMAL},
       send_time = #{sendTime,jdbcType=DATE}

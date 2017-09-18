@@ -16,15 +16,15 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="PackageResult">
     select 
     <include refid="Base_Column_List" />
-    from TEAM.PACKAGE
+    from PACKAGE
     where id = #{id,jdbcType=DECIMAL}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from TEAM.PACKAGE
+    delete from PACKAGE
     where id = #{id,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="org.lanqiao.entity.Package">
-    insert into TEAM.PACKAGE (id, package_Name, package_Price, 
+    insert into PACKAGE (id, package_Name, package_Price, 
       out_Date, package_Detail, package_Picture, 
       package_Safe)
     values (#{id,jdbcType=DECIMAL}, #{packageName,jdbcType=VARCHAR}, #{packagePrice,jdbcType=FLOAT}, 
@@ -32,7 +32,7 @@
       #{packageSafe,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="org.lanqiao.entity.Package">
-    insert into TEAM.PACKAGE
+    insert into PACKAGE
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -81,7 +81,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Package">
-    update TEAM.PACKAGE
+    update PACKAGE
     <set>
       <if test="packageName != null">
         package_Name = #{packageName,jdbcType=VARCHAR},
@@ -105,7 +105,7 @@
     where id = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Package">
-    update TEAM.PACKAGE
+    update PACKAGE
     set package_Name = #{packageName,jdbcType=VARCHAR},
       package_Price = #{packagePrice,jdbcType=FLOAT},
       out_Date = #{outDate,jdbcType=DATE},

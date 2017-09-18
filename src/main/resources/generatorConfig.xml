@@ -49,62 +49,63 @@
 			指定列的java数据类型
 			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
 		</table> -->
-		 <table schema="TEAM" tableName="ADDRESS" domainObjectName="Address"
+
+		 <table tableName="ADDRESS" domainObjectName="Address"
 			enableCountByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" enableUpdateByExample="false">
 			<property name="useActualColumnNames" value="false" />
 		</table>
-		 <table schema="TEAM" tableName="BROWSING_HISTORY" domainObjectName="BrowsingHistory"
+		 <table tableName="BROWSING_HISTORY" domainObjectName="BrowsingHistory"
 			enableCountByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" enableUpdateByExample="false">
 			<property name="useActualColumnNames" value="false" />
 		</table>
-		 <table schema="TEAM" tableName="COMMENT" domainObjectName="Comment"
+		 <table  tableName="COMMENT" domainObjectName="Comment"
 			enableCountByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" enableUpdateByExample="false">
 			<property name="useActualColumnNames" value="false" />
 		</table>
-		 <table schema="TEAM" tableName="EMPLOYEE" domainObjectName="Employee"
+		 <table tableName="EMPLOYEE" domainObjectName="Employee"
 			enableCountByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" enableUpdateByExample="false">
 			<property name="useActualColumnNames" value="false" />
 		</table>
-		 <table schema="TEAM" tableName="HOTEL" domainObjectName="Hotel"
+		 <table tableName="HOTEL" domainObjectName="Hotel"
 			enableCountByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" enableUpdateByExample="false">
 			<property name="useActualColumnNames" value="false" />
 		</table>
-		 <table schema="TEAM" tableName="ORDERS" domainObjectName="Orders"
+		 <table  tableName="ORDERS" domainObjectName="Orders"
 			enableCountByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" enableUpdateByExample="false">
 			<property name="useActualColumnNames" value="false" />
 		</table>
-		 <table schema="TEAM" tableName="PACKAGE" domainObjectName="Package"
+		 <table  tableName="PACKAGE" domainObjectName="Package"
 			enableCountByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" enableUpdateByExample="false">
 			<property name="useActualColumnNames" value="false" />
 		</table>
-		 <table schema="TEAM" tableName="PRODUCT" domainObjectName="Product"
+		 <table  tableName="PRODUCT" domainObjectName="Product"
 			enableCountByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" enableUpdateByExample="false">
 			<property name="useActualColumnNames" value="false" />
 		</table>
-		 <table schema="TEAM" tableName="ROOM" domainObjectName="Room"
+		 <table  tableName="ROOM" domainObjectName="Room"
 			enableCountByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" enableUpdateByExample="false">
 			<property name="useActualColumnNames" value="false" />
 		</table>
-		 <table schema="TEAM" tableName="SCENIC_SPOT" domainObjectName="ScenicSpot"
+		 <table  tableName="SCENIC_SPOT" domainObjectName="ScenicSpot"
 			enableCountByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" enableUpdateByExample="false">
 			<property name="useActualColumnNames" value="false" />
 		</table>
-		 <table schema="TEAM" tableName="TICKET" domainObjectName="Ticket"
+		 <table tableName="TICKET" domainObjectName="Ticket"
 			enableCountByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" enableUpdateByExample="false">
 			<property name="useActualColumnNames" value="false" />
 		</table>
-		 <table schema="TEAM" tableName="USER" domainObjectName="User"
+		 <table  tableName="USERS" domainObjectName="User"
 			enableCountByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" enableUpdateByExample="false">
 			<property name="useActualColumnNames" value="false" />

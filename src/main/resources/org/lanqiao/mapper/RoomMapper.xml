@@ -15,15 +15,15 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="RoomResult">
     select 
     <include refid="Base_Column_List" />
-    from TEAM.ROOM
+    from ROOM
     where id = #{id,jdbcType=DECIMAL}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from TEAM.ROOM
+    delete from ROOM
     where id = #{id,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="org.lanqiao.entity.Room">
-    insert into TEAM.ROOM (id, hotel_id, room_number, 
+    insert into ROOM (id, hotel_id, room_number, 
       room_price, room_pictrue, room_detail
       )
     values (#{id,jdbcType=DECIMAL}, #{hotelId,jdbcType=DECIMAL}, #{roomNumber,jdbcType=VARCHAR}, 
@@ -31,7 +31,7 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="org.lanqiao.entity.Room">
-    insert into TEAM.ROOM
+    insert into ROOM
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -74,7 +74,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Room">
-    update TEAM.ROOM
+    update ROOM
     <set>
       <if test="hotelId != null">
         hotel_id = #{hotelId,jdbcType=DECIMAL},
@@ -95,7 +95,7 @@
     where id = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Room">
-    update TEAM.ROOM
+    update ROOM
     set hotel_id = #{hotelId,jdbcType=DECIMAL},
       room_number = #{roomNumber,jdbcType=VARCHAR},
       room_price = #{roomPrice,jdbcType=FLOAT},

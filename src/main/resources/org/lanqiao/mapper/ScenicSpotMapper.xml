@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.lanqiao.dao.ScenicSpotDao">
-  <resultMap id="ScenicSpotResult" type="org.lanqiao.entity.ScenicSpot">
+  <resultMap id="SenicSpotResult" type="org.lanqiao.entity.ScenicSpot">
     <id column="id" jdbcType="DECIMAL" property="id" />
     <result column="address_id" jdbcType="DECIMAL" property="addressId" />
     <result column="scenic_spot_name" jdbcType="VARCHAR" property="scenicSpotName" />
@@ -13,18 +13,18 @@
     id, address_id, scenic_spot_name, " scenic_spot_ticket_price", " scenic_spot_detail", 
     scenic_spot__picture
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ScenicSpotResult">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="SenicSpotResult">
     select 
     <include refid="Base_Column_List" />
-    from TEAM.SCENIC_SPOT
+    from SCENIC_SPOT
     where id = #{id,jdbcType=DECIMAL}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from TEAM.SCENIC_SPOT
+    delete from SCENIC_SPOT
     where id = #{id,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="org.lanqiao.entity.ScenicSpot">
-    insert into TEAM.SCENIC_SPOT (id, address_id, scenic_spot_name, 
+    insert into SCENIC_SPOT (id, address_id, scenic_spot_name, 
       " scenic_spot_ticket_price", " scenic_spot_detail", 
       scenic_spot__picture)
     values (#{id,jdbcType=DECIMAL}, #{addressId,jdbcType=DECIMAL}, #{scenicSpotName,jdbcType=VARCHAR}, 
@@ -32,7 +32,7 @@
       #{scenicSpotPicture,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.lanqiao.entity.ScenicSpot">
-    insert into TEAM.SCENIC_SPOT
+    insert into SCENIC_SPOT
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -75,7 +75,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.ScenicSpot">
-    update TEAM.SCENIC_SPOT
+    update SCENIC_SPOT
     <set>
       <if test="addressId != null">
         address_id = #{addressId,jdbcType=DECIMAL},
@@ -96,7 +96,7 @@
     where id = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.ScenicSpot">
-    update TEAM.SCENIC_SPOT
+    update SCENIC_SPOT
     set address_id = #{addressId,jdbcType=DECIMAL},
       scenic_spot_name = #{scenicSpotName,jdbcType=VARCHAR},
       " scenic_spot_ticket_price" = #{scenicSpotTicketPrice,jdbcType=FLOAT},

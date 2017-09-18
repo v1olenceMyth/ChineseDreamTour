@@ -14,21 +14,21 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="AddressResult">
     select 
     <include refid="Base_Column_List" />
-    from TEAM.ADDRESS
+    from ADDRESS
     where id = #{id,jdbcType=DECIMAL}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from TEAM.ADDRESS
+    delete from ADDRESS
     where id = #{id,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="org.lanqiao.entity.Address">
-    insert into TEAM.ADDRESS (id, province, ctiy, 
+    insert into ADDRESS (id, province, ctiy, 
       area, address_detail)
     values (#{id,jdbcType=DECIMAL}, #{province,jdbcType=VARCHAR}, #{ctiy,jdbcType=VARCHAR}, 
       #{area,jdbcType=VARCHAR}, #{addressDetail,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.lanqiao.entity.Address">
-    insert into TEAM.ADDRESS
+    insert into ADDRESS
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -65,7 +65,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Address">
-    update TEAM.ADDRESS
+    update ADDRESS
     <set>
       <if test="province != null">
         province = #{province,jdbcType=VARCHAR},
@@ -83,7 +83,7 @@
     where id = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Address">
-    update TEAM.ADDRESS
+    update ADDRESS
     set province = #{province,jdbcType=VARCHAR},
       ctiy = #{ctiy,jdbcType=VARCHAR},
       area = #{area,jdbcType=VARCHAR},

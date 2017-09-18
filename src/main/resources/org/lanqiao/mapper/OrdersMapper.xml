@@ -15,15 +15,15 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="OrdersResult">
     select 
     <include refid="Base_Column_List" />
-    from TEAM.ORDERS
+    from ORDERS
     where id = #{id,jdbcType=DECIMAL}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from TEAM.ORDERS
+    delete from ORDERS
     where id = #{id,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="org.lanqiao.entity.Orders">
-    insert into TEAM.ORDERS (id, people_Number, order_Date, 
+    insert into ORDERS (id, people_Number, order_Date, 
       order_Status, order_Total_Price, user_Id
       )
     values (#{id,jdbcType=DECIMAL}, #{peopleNumber,jdbcType=DECIMAL}, #{orderDate,jdbcType=DATE}, 
@@ -31,7 +31,7 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="org.lanqiao.entity.Orders">
-    insert into TEAM.ORDERS
+    insert into ORDERS
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -74,7 +74,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Orders">
-    update TEAM.ORDERS
+    update ORDERS
     <set>
       <if test="peopleNumber != null">
         people_Number = #{peopleNumber,jdbcType=DECIMAL},
@@ -95,7 +95,7 @@
     where id = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Orders">
-    update TEAM.ORDERS
+    update ORDERS
     set people_Number = #{peopleNumber,jdbcType=DECIMAL},
       order_Date = #{orderDate,jdbcType=DATE},
       order_Status = #{orderStatus,jdbcType=VARCHAR},

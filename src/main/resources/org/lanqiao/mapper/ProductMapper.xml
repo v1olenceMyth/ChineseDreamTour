@@ -14,21 +14,21 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ProductResult">
     select 
     <include refid="Base_Column_List" />
-    from TEAM.PRODUCT
+    from PRODUCT
     where id = #{id,jdbcType=DECIMAL}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from TEAM.PRODUCT
+    delete from PRODUCT
     where id = #{id,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="org.lanqiao.entity.Product">
-    insert into TEAM.PRODUCT (id, city, product_Name, 
+    insert into PRODUCT (id, city, product_Name, 
       product_Picture, product_Detail)
     values (#{id,jdbcType=DECIMAL}, #{city,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
       #{productPicture,jdbcType=VARCHAR}, #{productDetail,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.lanqiao.entity.Product">
-    insert into TEAM.PRODUCT
+    insert into PRODUCT
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -65,7 +65,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Product">
-    update TEAM.PRODUCT
+    update PRODUCT
     <set>
       <if test="city != null">
         city = #{city,jdbcType=VARCHAR},
@@ -83,7 +83,7 @@
     where id = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Product">
-    update TEAM.PRODUCT
+    update PRODUCT
     set city = #{city,jdbcType=VARCHAR},
       product_Name = #{productName,jdbcType=VARCHAR},
       product_Picture = #{productPicture,jdbcType=VARCHAR},
