@@ -15,6 +15,8 @@ public class Orders {
 
     private Long userId;
 
+    private Long packageId;
+
     public Long getId() {
         return id;
     }
@@ -61,5 +63,13 @@ public class Orders {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public Long getPackageId() {
+        return packageId;
+    }
+
+    public void setPackageId(Long packageId) {
+        this.packageId = packageId;
     }
 }

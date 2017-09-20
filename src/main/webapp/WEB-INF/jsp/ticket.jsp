@@ -10,15 +10,16 @@
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		var wweya_li = $("div.tab_menu ul li");
-		wweya_li.click(function() {
-			$(this).addClass("selected").siblings().removeClass("selected");
-			var index = wweya_li.index(this);
-			$("div.tab_box > div").eq(index).show(100).siblings().hide();
-		}).hover(function() {
-			$(this).addClass("hover");
-		}, function() {
-			$(this).removeClass("hover");
+		var result="";
+		$.ajax({
+			async:false,
+		    type: "get",
+		    url: "http://api.ip138.com/query/?token=4d57bb38086e5b739ad1540ed115f1d7",
+		    data:{},
+		    success: function(msg){
+		        result = msg;
+		          alert(result );
+		    },dataType:"jsonp"
 		});
 	});
 </script>
@@ -100,8 +101,6 @@
 					<div class="tab_menu cx_tit clearfix">
 						<ul class="cx_ul">
 							<li class="selected">站站搜索</li>
-							<li>车站搜索</li>
-							<li>车次搜索</li>
 						</ul>
 						<a class="cx_p" href="#">出票状态查询</a>
 					</div>
@@ -122,55 +121,19 @@
 								</tr>
 								<tr>
 									<td class="bt_t">日 期</td>
-									<td class="bt_in"><label> <input type="text"
-											name="textfield2" id="textfield2">
+									<td class="bt_in" ><label> <input type="date"
+											name="textfield2" id="textfield2" style="width: 145px">
 									</label></td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 								</tr>
 							</table>
 						</div>
-						<div class="hide cx_tab">交换机换句话</div>
-						<div class="hide cx_tab">交换机换句话</div>
-					</div>
-				</div>
-				<p class="k_search">可搜索2959个车站，4003次列车的时刻信息</p>
-				<div class="hb_tj">
-					<div class="hb_tit">航班推荐</div>
-					<div class="hb_con">
-						<table class="hb_tab" width="680" border="0" cellspacing="0"
-							cellpadding="0">
-							<tr>
-								<td width="43" rowspan="2" align="center" valign="middle"><img
-									src="images/fj_bz.jpg"></td>
-								<td class="cc_m" width="111">HO1252</td>
-								<td class="qf_b" width="85">北京</td>
-								<td class="t_qf" width="81">06:50</td>
-								<td width="118"><b>飞行时长</b></td>
-								<td width="95" align="center" valign="middle"><span>¥382</span></td>
-								<td width="147" rowspan="2" align="center"><a href="#"><img
-										src="images/order_b.jpg"></a></td>
-							</tr>
-							<tr>
-								<td>吉祥航空</td>
-								<td class="jl_b">上海</td>
-								<td class="t_jl">09:10</td>
-								<td>2小时20分</td>
-								<td align="center" valign="middle">3.4折</td>
-							</tr>
-						</table>
 					</div>
 				</div>
 				<div class="tm_wrap clearfix">
 					<div class="tab_menu tm_tit clearfix">
 						<ul class="tm_ul">
-							<li class="selected">09-15周日</li>
-							<li>09-16周一</li>
-							<li>09-17周二</li>
-							<li>09-18周三</li>
-							<li>09-19周四</li>
-							<li>09-20周五</li>
-							<li>09-21周六</li>
 						</ul>
 					</div>
 					<div class="tab_box tm_box">
@@ -178,30 +141,17 @@
 							<div class="clearfix">
 								<div class="tm_l">
 									<div class="tm_cx">
-										<b>车次类型</b> <label> <input type="checkbox"
-											name="复选框组1" value="复选框" id="复选框组1_0"> D-动车组
-										</label> <label> <input type="checkbox" name="复选框组1"
-											value="复选框" id="复选框组1_1"> G-高速动车
-										</label> <label> <input type="checkbox" name="复选框组1"
-											value="复选框" id="复选框组1_2"> T-空调特快
-										</label> <label> <input type="checkbox" name="复选框组1"
-											value="复选框" id="复选框组1_3"> 其它
+										<b>车次类型</b> 
+										<label> <input type="radio" name="复选框组1"
+										    value="复选框" id="复选框组1_0"> D-动车组列车
+										</label> <label> <input type="radio" name="复选框组1"
+											value="复选框" id="复选框组1_1"> K-快速列车
+										</label> <label> <input type="radio" name="复选框组1"
+											value="复选框" id="复选框组1_2"> T-特快列车
+										</label> <label> <input type="radio" name="复选框组1"
+											value="复选框" id="复选框组1_3"> G-高速动车组
 										</label>
 									</div>
-									<div class="tm_cx">
-										<b>发车时间</b> <label> <input type="checkbox"
-											name="复选框组2" value="复选框" id="复选框组2_0"> 上午
-										</label> <label> <input type="checkbox" name="复选框组2"
-											value="复选框" id="复选框组2_1"> 中午
-										</label> <label> <input type="checkbox" name="复选框组2"
-											value="复选框" id="复选框组2_2"> 下午
-										</label> <label> <input type="checkbox" name="复选框组2"
-											value="复选框" id="复选框组2_3"> 晚上
-										</label>
-									</div>
-								</div>
-								<div class="tm_r">
-									<a href="#">更多筛选条件︾</a>
 								</div>
 							</div>
 							<div class="lc_wrap">
@@ -211,7 +161,7 @@
 										<td width="98"><p>
 												<b>车次</b>
 											</p>
-											<p>类型</p></td>
+											<p></p></td>
 										<td width="108"><p>
 												<b>发站</b>
 											</p>
@@ -232,7 +182,6 @@
 												<span class="lt_row">参考票价</span>
 											</p>
 											<p>
-												<span class="lb_row">剩余票量</span>
 											</p></td>
 										<td width="140">&nbsp;</td>
 									</tr>
@@ -243,8 +192,7 @@
 											cellpadding="0">
 											<tbody>
 												<tr>
-													<td class="cc_m" width="129">HO1252 <a class="ls_a"
-														href="#">详情▼</a></td>
+													<td class="cc_m" width="129">HO1252 
 													<td class="qf_b" width="90">北京</td>
 													<td class="t_qf" width="107">06:50</td>
 													<td width="100" rowspan="2">2小时20分</td>
@@ -255,189 +203,14 @@
 															src="images/mp_button.jpg"></a></td>
 												</tr>
 												<tr>
-													<td>吉祥航空</td>
+													<td></td>
 													<td class="jl_b">上海</td>
 													<td class="t_jl">09:10</td>
-													<td align="center" valign="middle">票量未知</td>
 												</tr>
 											</tbody>
 										</table>
 									</div>
-									<div class="lc_wb">
-										<table class="hb_tab" width="680" border="0" cellspacing="0"
-											cellpadding="0">
-											<tbody>
-												<tr>
-													<td class="cc_m" width="129">HO1252 <a class="ls_a"
-														href="#">详情▼</a></td>
-													<td class="qf_b" width="90">北京</td>
-													<td class="t_qf" width="107">06:50</td>
-													<td width="100" rowspan="2">2小时20分</td>
-													<td width="99" align="center" valign="middle">二等软座<span>
-															<a class="fn_o" href="#">¥382▼</a>
-													</span></td>
-													<td width="155" rowspan="2" align="center"><a href="#"><img
-															src="images/mp_button.jpg"></a></td>
-												</tr>
-												<tr>
-													<td>吉祥航空</td>
-													<td class="jl_b">上海</td>
-													<td class="t_jl">09:10</td>
-													<td align="center" valign="middle">票量未知</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-									<div class="lc_wb">
-										<table class="hb_tab" width="680" border="0" cellspacing="0"
-											cellpadding="0">
-											<tbody>
-												<tr>
-													<td class="cc_m" width="129">HO1252 <a class="ls_a"
-														href="#">详情▼</a></td>
-													<td class="qf_b" width="90">北京</td>
-													<td class="t_qf" width="107">06:50</td>
-													<td width="100" rowspan="2">2小时20分</td>
-													<td width="99" align="center" valign="middle">二等软座<span>
-															<a class="fn_o" href="#">¥382▼</a>
-													</span></td>
-													<td width="155" rowspan="2" align="center"><a href="#"><img
-															src="images/mp_button.jpg"></a></td>
-												</tr>
-												<tr>
-													<td>吉祥航空</td>
-													<td class="jl_b">上海</td>
-													<td class="t_jl">09:10</td>
-													<td align="center" valign="middle">票量未知</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-									<div class="lc_wb">
-										<table class="hb_tab" width="680" border="0" cellspacing="0"
-											cellpadding="0">
-											<tbody>
-												<tr>
-													<td class="cc_m" width="129">HO1252 <a class="ls_a"
-														href="#">详情▼</a></td>
-													<td class="qf_b" width="90">北京</td>
-													<td class="t_qf" width="107">06:50</td>
-													<td width="100" rowspan="2">2小时20分</td>
-													<td width="99" align="center" valign="middle">二等软座<span>
-															<a class="fn_o" href="#">¥382▼</a>
-													</span></td>
-													<td width="155" rowspan="2" align="center"><a href="#"><img
-															src="images/mp_button.jpg"></a></td>
-												</tr>
-												<tr>
-													<td>吉祥航空</td>
-													<td class="jl_b">上海</td>
-													<td class="t_jl">09:10</td>
-													<td align="center" valign="middle">票量未知</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-									<div class="lc_wb">
-										<table class="hb_tab" width="680" border="0" cellspacing="0"
-											cellpadding="0">
-											<tbody>
-												<tr>
-													<td class="cc_m" width="129">HO1252 <a class="ls_a"
-														href="#">详情▼</a></td>
-													<td class="qf_b" width="90">北京</td>
-													<td class="t_qf" width="107">06:50</td>
-													<td width="100" rowspan="2">2小时20分</td>
-													<td width="99" align="center" valign="middle">二等软座<span>
-															<a class="fn_o" href="#">¥382▼</a>
-													</span></td>
-													<td width="155" rowspan="2" align="center"><a href="#"><img
-															src="images/mp_button.jpg"></a></td>
-												</tr>
-												<tr>
-													<td>吉祥航空</td>
-													<td class="jl_b">上海</td>
-													<td class="t_jl">09:10</td>
-													<td align="center" valign="middle">票量未知</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-									<div class="lc_wb">
-										<table class="hb_tab" width="680" border="0" cellspacing="0"
-											cellpadding="0">
-											<tbody>
-												<tr>
-													<td class="cc_m" width="129">HO1252 <a class="ls_a"
-														href="#">详情▼</a></td>
-													<td class="qf_b" width="90">北京</td>
-													<td class="t_qf" width="107">06:50</td>
-													<td width="100" rowspan="2">2小时20分</td>
-													<td width="99" align="center" valign="middle">二等软座<span>
-															<a class="fn_o" href="#">¥382▼</a>
-													</span></td>
-													<td width="155" rowspan="2" align="center"><a href="#"><img
-															src="images/mp_button.jpg"></a></td>
-												</tr>
-												<tr>
-													<td>吉祥航空</td>
-													<td class="jl_b">上海</td>
-													<td class="t_jl">09:10</td>
-													<td align="center" valign="middle">票量未知</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-									<div class="lc_wb">
-										<table class="hb_tab" width="680" border="0" cellspacing="0"
-											cellpadding="0">
-											<tbody>
-												<tr>
-													<td class="cc_m" width="129">HO1252 <a class="ls_a"
-														href="#">详情▼</a></td>
-													<td class="qf_b" width="90">北京</td>
-													<td class="t_qf" width="107">06:50</td>
-													<td width="100" rowspan="2">2小时20分</td>
-													<td width="99" align="center" valign="middle">二等软座<span>
-															<a class="fn_o" href="#">¥382▼</a>
-													</span></td>
-													<td width="155" rowspan="2" align="center"><a href="#"><img
-															src="images/mp_button.jpg"></a></td>
-												</tr>
-												<tr>
-													<td>吉祥航空</td>
-													<td class="jl_b">上海</td>
-													<td class="t_jl">09:10</td>
-													<td align="center" valign="middle">票量未知</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-									<div class="lc_wb">
-										<table class="hb_tab" width="680" border="0" cellspacing="0"
-											cellpadding="0">
-											<tbody>
-												<tr>
-													<td class="cc_m" width="129">HO1252 <a class="ls_a"
-														href="#">详情▼</a></td>
-													<td class="qf_b" width="90">北京</td>
-													<td class="t_qf" width="107">06:50</td>
-													<td width="100" rowspan="2">2小时20分</td>
-													<td width="99" align="center" valign="middle">二等软座<span>
-															<a class="fn_o" href="#">¥382▼</a>
-													</span></td>
-													<td width="155" rowspan="2" align="center"><a href="#"><img
-															src="images/mp_button.jpg"></a></td>
-												</tr>
-												<tr>
-													<td>吉祥航空</td>
-													<td class="jl_b">上海</td>
-													<td class="t_jl">09:10</td>
-													<td align="center" valign="middle">票量未知</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
+
 									<div class="p_page clearfix">
 										<a href="#">1</a> <a href="#">2</a> <a href="#">3</a><a
 											href="#">下一页</a> <span>显示 <label> <select
@@ -449,12 +222,6 @@
 								</div>
 							</div>
 						</div>
-						<div class="hide tm_tab">交换机换句话</div>
-						<div class="hide tm_tab">交换机换句话</div>
-						<div class="hide tm_tab">交换机换句话</div>
-						<div class="hide tm_tab">交换机换句话</div>
-						<div class="hide tm_tab">交换机换句话</div>
-						<div class="hide tm_tab">交换机换句话</div>
 					</div>
 				</div>
 			</div>

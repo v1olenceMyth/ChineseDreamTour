@@ -14,4 +14,6 @@ public interface ScenicSpotDao {
     int updateByPrimaryKeySelective(ScenicSpot record);
 
     int updateByPrimaryKey(ScenicSpot record);
+    
+    Long selectAddressIdByName(String scenicSpotName);
 }

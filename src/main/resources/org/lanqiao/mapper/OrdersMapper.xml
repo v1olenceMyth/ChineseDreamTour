@@ -2,54 +2,58 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.lanqiao.dao.OrdersDao">
   <resultMap id="OrdersResult" type="org.lanqiao.entity.Orders">
-    <id column="id" jdbcType="DECIMAL" property="id" />
-    <result column="people_Number" jdbcType="DECIMAL" property="peopleNumber" />
-    <result column="order_Date" jdbcType="DATE" property="orderDate" />
-    <result column="order_Status" jdbcType="VARCHAR" property="orderStatus" />
-    <result column="order_Total_Price" jdbcType="FLOAT" property="orderTotalPrice" />
-    <result column="user_Id" jdbcType="DECIMAL" property="userId" />
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="PEOPLE_NUMBER" jdbcType="DECIMAL" property="peopleNumber" />
+    <result column="ORDER_DATE" jdbcType="DATE" property="orderDate" />
+    <result column="ORDER_STATUS" jdbcType="VARCHAR" property="orderStatus" />
+    <result column="ORDER_TOTAL_PRICE" jdbcType="FLOAT" property="orderTotalPrice" />
+    <result column="USER_ID" jdbcType="DECIMAL" property="userId" />
+    <result column="PACKAGE_ID" jdbcType="DECIMAL" property="packageId" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, people_Number, order_Date, order_Status, order_Total_Price, user_Id
+    ID, PEOPLE_NUMBER, ORDER_DATE, ORDER_STATUS, ORDER_TOTAL_PRICE, USER_ID, PACKAGE_ID
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="OrdersResult">
     select 
     <include refid="Base_Column_List" />
     from ORDERS
-    where id = #{id,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from ORDERS
-    where id = #{id,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="org.lanqiao.entity.Orders">
-    insert into ORDERS (id, people_Number, order_Date, 
-      order_Status, order_Total_Price, user_Id
-      )
+    insert into ORDERS (ID, PEOPLE_NUMBER, ORDER_DATE, 
+      ORDER_STATUS, ORDER_TOTAL_PRICE, USER_ID, 
+      PACKAGE_ID)
     values (#{id,jdbcType=DECIMAL}, #{peopleNumber,jdbcType=DECIMAL}, #{orderDate,jdbcType=DATE}, 
-      #{orderStatus,jdbcType=VARCHAR}, #{orderTotalPrice,jdbcType=FLOAT}, #{userId,jdbcType=DECIMAL}
-      )
+      #{orderStatus,jdbcType=VARCHAR}, #{orderTotalPrice,jdbcType=FLOAT}, #{userId,jdbcType=DECIMAL}, 
+      #{packageId,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="org.lanqiao.entity.Orders">
     insert into ORDERS
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        id,
+        ID,
       </if>
       <if test="peopleNumber != null">
-        people_Number,
+        PEOPLE_NUMBER,
       </if>
       <if test="orderDate != null">
-        order_Date,
+        ORDER_DATE,
       </if>
       <if test="orderStatus != null">
-        order_Status,
+        ORDER_STATUS,
       </if>
       <if test="orderTotalPrice != null">
-        order_Total_Price,
+        ORDER_TOTAL_PRICE,
       </if>
       <if test="userId != null">
-        user_Id,
+        USER_ID,
+      </if>
+      <if test="packageId != null">
+        PACKAGE_ID,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -71,36 +75,43 @@
       <if test="userId != null">
         #{userId,jdbcType=DECIMAL},
       </if>
+      <if test="packageId != null">
+        #{packageId,jdbcType=DECIMAL},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Orders">
     update ORDERS
     <set>
       <if test="peopleNumber != null">
-        people_Number = #{peopleNumber,jdbcType=DECIMAL},
+        PEOPLE_NUMBER = #{peopleNumber,jdbcType=DECIMAL},
       </if>
       <if test="orderDate != null">
-        order_Date = #{orderDate,jdbcType=DATE},
+        ORDER_DATE = #{orderDate,jdbcType=DATE},
       </if>
       <if test="orderStatus != null">
-        order_Status = #{orderStatus,jdbcType=VARCHAR},
+        ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR},
       </if>
       <if test="orderTotalPrice != null">
-        order_Total_Price = #{orderTotalPrice,jdbcType=FLOAT},
+        ORDER_TOTAL_PRICE = #{orderTotalPrice,jdbcType=FLOAT},
       </if>
       <if test="userId != null">
-        user_Id = #{userId,jdbcType=DECIMAL},
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="packageId != null">
+        PACKAGE_ID = #{packageId,jdbcType=DECIMAL},
       </if>
     </set>
-    where id = #{id,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Orders">
     update ORDERS
-    set people_Number = #{peopleNumber,jdbcType=DECIMAL},
-      order_Date = #{orderDate,jdbcType=DATE},
-      order_Status = #{orderStatus,jdbcType=VARCHAR},
-      order_Total_Price = #{orderTotalPrice,jdbcType=FLOAT},
-      user_Id = #{userId,jdbcType=DECIMAL}
-    where id = #{id,jdbcType=DECIMAL}
+    set PEOPLE_NUMBER = #{peopleNumber,jdbcType=DECIMAL},
+      ORDER_DATE = #{orderDate,jdbcType=DATE},
+      ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR},
+      ORDER_TOTAL_PRICE = #{orderTotalPrice,jdbcType=FLOAT},
+      USER_ID = #{userId,jdbcType=DECIMAL},
+      PACKAGE_ID = #{packageId,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
   </update>
 </mapper>

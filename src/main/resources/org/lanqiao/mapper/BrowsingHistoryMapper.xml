@@ -16,6 +16,11 @@
     from BROWSING_HISTORY
     where id = #{id,jdbcType=DECIMAL}
   </select>
+  <select id="selectAll" resultMap="BrowsingHistoryResult">
+    select 
+    <include refid="Base_Column_List" />
+    from BROWSING_HISTORY
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from BROWSING_HISTORY
     where id = #{id,jdbcType=DECIMAL}
